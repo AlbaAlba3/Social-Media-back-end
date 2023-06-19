@@ -28,6 +28,11 @@ public class User {
     private String email;
     private String password;
 
+    @Enumerated(EnumType.STRING)
+    private Provider provider;
+
+
+
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "user_roles",
     joinColumns = @JoinColumn(name = "user_id"),
@@ -86,5 +91,14 @@ public class User {
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
+    }
+
+
+    public Provider getProvider() {
+        return provider;
+    }
+
+    public void setProvider(Provider provider) {
+        this.provider = provider;
     }
 }
